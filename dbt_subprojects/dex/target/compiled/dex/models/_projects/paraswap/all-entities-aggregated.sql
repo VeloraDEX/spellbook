@@ -25,7 +25,23 @@ with entities as (
             
          union all 
     
+        select 'delta-v2' as entity, 'ethereum' as blockchain, contract_address as contract_address, evt_block_time as block_time, evt_tx_hash as tx_hash, 0 as usd_value from paraswapdelta_base.ParaswapDeltav2_evt_OrderPartiallyFilled
+        where 
+            (evt_block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53
+            
+         union all 
+    
         select 'delta-v2' as entity, 'base' as blockchain, contract_address as contract_address, evt_block_time as block_time, evt_tx_hash as tx_hash, 0 as usd_value from paraswapdelta_base.ParaswapDeltav2_evt_OrderSettled
+        where 
+            (evt_block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53
+            
+         union all 
+    
+        select 'delta-v2' as entity, 'base' as blockchain, contract_address as contract_address, evt_block_time as block_time, evt_tx_hash as tx_hash, 0 as usd_value from paraswapdelta_base.ParaswapDeltav2_evt_OrderPartiallyFilled
         where 
             (evt_block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
             
