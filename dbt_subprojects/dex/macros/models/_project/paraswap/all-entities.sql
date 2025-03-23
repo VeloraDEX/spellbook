@@ -12,10 +12,11 @@ set delta_configs = [
     ['ethereum', 'delta-v1-batch', 'paraswapdelta_ethereum.ParaswapDeltav1_call_safeSettleBatchSwap', 'contract_address', 'call_block_time', 'call_tx_hash', null, '0'],
 
     ['ethereum', 'delta-v2', 'paraswapdelta_ethereum.ParaswapDeltav2_evt_OrderSettled', 'contract_address', 'evt_block_time', 'evt_tx_hash', null, '0'],
+    ['ethereum', 'delta-v2', 'paraswapdelta_base.ParaswapDeltav2_evt_OrderPartiallyFilled', 'contract_address', 'evt_block_time', 'evt_tx_hash', 'evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53', '0'], 
     ['base', 'delta-v2', 'paraswapdelta_base.ParaswapDeltav2_evt_OrderSettled', 'contract_address', 'evt_block_time', 'evt_tx_hash', 'evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53', '0'],
+    ['base', 'delta-v2', 'paraswapdelta_base.ParaswapDeltav2_evt_OrderPartiallyFilled', 'contract_address', 'evt_block_time', 'evt_tx_hash', 'evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53', '0'], 
 
     ['ethereum', 'augustus', 'dex_aggregator.trades', 'project_contract_address', 'block_time', 'tx_hash', "project='paraswap' and blockchain='ethereum'", 'amount_usd'],
-
     ['polygon', 'augustus', 'dex_aggregator.trades', 'project_contract_address', 'block_time', 'tx_hash', "project='paraswap' and blockchain='polygon'", 'amount_usd'],
     ['bnb', 'augustus', 'dex_aggregator.trades', 'project_contract_address', 'block_time', 'tx_hash', "project='paraswap' and blockchain='bnb'", 'amount_usd'],
     ['arbitrum', 'augustus', 'dex_aggregator.trades', 'project_contract_address', 'block_time', 'tx_hash', "project='paraswap' and blockchain='arbitrum'", 'amount_usd'],
