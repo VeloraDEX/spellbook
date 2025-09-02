@@ -33,6 +33,14 @@ with entities as (
             
          union all 
     
+        select 'delta-v2' as entity, 'optimism' as blockchain, contract_address as contract_address, evt_block_time as block_time, evt_tx_hash as tx_hash, 0 as usd_value from paraswapdelta_optimism.ParaswapDeltav2_evt_OrderSettled
+        where 
+            (evt_block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND evt_tx_from <> 0xace5ae3de4baffc4a45028659c5ee330764e4f53
+            
+         union all 
+    
         select 'augustus' as entity, 'ethereum' as blockchain, project_contract_address as contract_address, block_time as block_time, tx_hash as tx_hash, amount_usd as usd_value from dex_aggregator.trades
         where 
             (block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
@@ -94,6 +102,30 @@ with entities as (
             (block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
             
             AND project='paraswap' and blockchain='base'
+            
+         union all 
+    
+        select 'augustus' as entity, 'sonic' as blockchain, project_contract_address as contract_address, block_time as block_time, tx_hash as tx_hash, amount_usd as usd_value from dex_aggregator.trades
+        where 
+            (block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND project='paraswap' and blockchain='sonic'
+            
+         union all 
+    
+        select 'augustus' as entity, 'gnosis' as blockchain, project_contract_address as contract_address, block_time as block_time, tx_hash as tx_hash, amount_usd as usd_value from dex_aggregator.trades
+        where 
+            (block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND project='paraswap' and blockchain='gnosis'
+            
+         union all 
+    
+        select 'augustus' as entity, 'unichain' as blockchain, project_contract_address as contract_address, block_time as block_time, tx_hash as tx_hash, amount_usd as usd_value from dex_aggregator.trades
+        where 
+            (block_time BETWEEN timestamp '{{date_from}}' AND timestamp '{{date_to}}')
+            
+            AND project='paraswap' and blockchain='unichain'
             
         
     

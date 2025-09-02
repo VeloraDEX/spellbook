@@ -297,24 +297,24 @@ from delta_v1_safe_settle_batch_swap_model
 --     d.trace_address,
 --     d.evt_index
 -- FROM dexs d
--- INNER JOIN delta_prod.ethereum.transactions tx ON d.tx_hash = tx.hash
+-- INNER JOIN "delta_prod"."ethereum"."transactions" tx ON d.tx_hash = tx.hash
 --     AND d.block_number = tx.block_number
 --     
 --     AND tx.block_time >= TIMESTAMP '2024-05-01'
 --     
 --     
--- LEFT JOIN delta_prod.tokens.erc20 e1 ON e1.contract_address = d.token_bought_address
+-- LEFT JOIN "delta_prod"."tokens"."erc20" e1 ON e1.contract_address = d.token_bought_address
 --     AND e1.blockchain = 'ethereum'
--- LEFT JOIN delta_prod.tokens.erc20 e2 ON e2.contract_address = d.token_sold_address
+-- LEFT JOIN "delta_prod"."tokens"."erc20" e2 ON e2.contract_address = d.token_sold_address
 --     AND e2.blockchain = 'ethereum'
--- LEFT JOIN delta_prod.prices.usd p1 ON p1.minute = date_trunc('minute', d.block_time)
+-- LEFT JOIN "delta_prod"."prices"."usd" p1 ON p1.minute = date_trunc('minute', d.block_time)
 --     AND p1.contract_address = d.token_bought_address
 --     AND p1.blockchain = 'ethereum'
 --     
 --     AND p1.minute >= TIMESTAMP '2024-05-01'
 --     
 --     
--- LEFT JOIN delta_prod.prices.usd p2 ON p2.minute = date_trunc('minute', d.block_time)
+-- LEFT JOIN "delta_prod"."prices"."usd" p2 ON p2.minute = date_trunc('minute', d.block_time)
 --     AND p2.contract_address = d.token_sold_address
 --     AND p2.blockchain = 'ethereum'
 --     
